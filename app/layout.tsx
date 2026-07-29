@@ -21,17 +21,17 @@ const script = Parisienne({
 });
 
 export const metadata: Metadata = {
-  title: "Para ti, mi amor | 1 de agosto",
-  description: "Una sorpresa especial para celebrar el Día de la Novia.",
+  title: "Para Karina, con amor | 1 de agosto",
+  description: "Una sorpresa romántica creada especialmente para Karina.",
   openGraph: {
-    title: "Para ti, mi amor",
-    description: "Una sorpresa especial para celebrar el 1 de agosto.",
+    title: "Para Karina, con amor",
+    description: "Una sorpresa romántica creada especialmente para Karina.",
     images: [{ url: "/og.png", width: 1732, height: 906 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Para ti, mi amor",
-    description: "Una sorpresa especial para celebrar el 1 de agosto.",
+    title: "Para Karina, con amor",
+    description: "Una sorpresa romántica creada especialmente para Karina.",
     images: ["/og.png"],
   },
 };
