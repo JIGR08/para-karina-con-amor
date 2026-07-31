@@ -40,10 +40,13 @@
     .music-frame{position:fixed;z-index:19;right:1rem;top:5rem;left:auto;width:min(360px,calc(100vw - 2rem));height:203px;opacity:1;display:none;pointer-events:auto;border:1px solid #d8b46d80;border-radius:12px;background:#071723;box-shadow:0 18px 50px #0008}
     .music-frame.show{display:block}
     @media(max-width:720px){.letter-section{min-height:1320px}.envelope.open{height:990px}.envelope.open .paper{min-height:950px;padding:1.7rem 1.35rem;font-size:.94rem;line-height:1.5;gap:.75rem}.envelope.open .paper .dear{font-size:1.65rem}.music-frame{top:4.8rem;height:190px}}
+
+    /* Reproductor invisible; el botón pequeño queda como respaldo del bloqueo de autoplay */
+    .music-frame,.music-frame.show{display:block!important;position:fixed!important;left:-10000px!important;right:auto!important;top:auto!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;border:0!important;box-shadow:none!important}
 </style>
 </head>
 <body>
-  <button class="music" id="music"><b>♪</b><span>Escuchar Enamorados</span></button><iframe class="music-frame" id="music-frame" title="Enamorados de Tercer Cielo" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <button class="music" id="music"><b>♪</b><span>Música ♫</span></button><iframe class="music-frame" id="music-frame" title="Enamorados de Tercer Cielo" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KuY1JGYYXCw?autoplay=1&loop=1&playlist=KuY1JGYYXCw&controls=0&playsinline=1"></iframe>
   <section class="hero"><div class="stars"></div><div class="moon"></div><div class="copy"><p class="eyebrow">30 · JULIO · 2026</p><p class="script">Una página hecha solo para ti</p><h1>Para ti,<span>Karina</span></h1><p class="intro">Hay personas que llegan a tu vida y, sin hacer ruido, la convierten en tu lugar favorito. Tú eres esa persona para mí.</p><a class="cta" href="#carta">Descubre tu sorpresa ↓</a></div></section>
   <section class="name"><p class="eyebrow">LA DUEÑA DE ESTA HISTORIA</p><div class="letters"><span>K</span><span>A</span><span>R</span><span>I</span><span>N</span><span>A</span></div><p class="script">Seis letras. Un nombre. Alguien a quien quiero muchísimo.</p></section>
   <section class="counter-section"><p class="eyebrow">DESDE QUE COMENZÓ ALGO MUY BONITO</p><h2>Nuestra bonita historia</h2><p class="counter-intro">Aún no somos novios, pero quiero que sepas que te quiero mucho y que valoro cada instante de esta bonita relación.</p><div class="counter" aria-label="Tiempo desde el 14 de mayo de 2026 a las 12:06 p. m."><div class="time-box"><strong id="days">0</strong><span>Días</span></div><div class="time-box"><strong id="hours">0</strong><span>Horas</span></div><div class="time-box"><strong id="minutes">0</strong><span>Minutos</span></div><div class="time-box"><strong id="seconds">0</strong><span>Segundos</span></div></div><p class="since">DESDE EL 14 DE MAYO DE 2026 · 12:06 P. M.</p></section>
@@ -63,7 +66,7 @@
     document.querySelector("#next").onclick=()=>{reason=(reason+1)%reasons.length;reasonEl.textContent=reasons[reason];reasonEl.style.animation="none";requestAnimationFrame(()=>reasonEl.style.animation="fade .5s")};
     document.querySelector("#envelope").onclick=e=>e.currentTarget.classList.add("open");
     document.querySelector("#reveal").onclick=()=>{document.querySelector("#question").style.display="none";document.querySelector("#answer").classList.add("show")};
-    document.querySelector("#music").onclick=function(){const frame=document.querySelector("#music-frame");if(playing){frame.src="";frame.classList.remove("show");playing=false;this.classList.remove("playing");this.querySelector("span").textContent="Escuchar Enamorados";return}frame.src="https://www.youtube.com/embed/KuY1JGYYXCw?autoplay=1&loop=1&playlist=KuY1JGYYXCw&controls=1&playsinline=1";frame.classList.add("show");playing=true;this.classList.add("playing");this.querySelector("span").textContent="Cerrar reproductor"};
+    document.querySelector("#music").onclick=function(){const frame=document.querySelector("#music-frame");if(playing){frame.src="";frame.classList.remove("show");playing=false;this.classList.remove("playing");this.querySelector("span").textContent="Activar música";return}frame.src="https://www.youtube.com/embed/KuY1JGYYXCw?autoplay=1&loop=1&playlist=KuY1JGYYXCw&controls=1&playsinline=1";frame.classList.add("show");playing=true;this.classList.add("playing");this.querySelector("span").textContent="Detener música"};
   </script>
 </body>
 </html>
