@@ -30,7 +30,17 @@
     footer{padding:2rem;text-align:center;color:#e6daca;background:#06171f;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase}
     @keyframes rise{from{opacity:0;transform:translateY(35px)}}@keyframes fade{from{opacity:0;transform:translateY(10px)}}@keyframes beat{15%{transform:scale(1.15)}30%{transform:scale(1)}}
     @media(max-width:720px){.counter{grid-template-columns:repeat(2,minmax(110px,150px))}.music span{display:none}.moon{width:4.5rem}.letter-section{min-height:1060px}.envelope{height:260px}.paper{height:620px;padding:1.8rem;font-size:.9rem;gap:.7rem}.envelope.open .paper{transform:translateY(-300px)}.reason-card{padding:3.5rem 1.4rem}.grid,.keepsake{grid-template-columns:1fr}.promise+.promise{border-left:0;border-top:1px solid #6f293833}.image{margin:4rem 2rem 2rem;max-height:720px}.keepsake-copy{padding:4rem 2rem 6rem;text-align:center}.final-card{padding:3rem 1.5rem}}
-  </style>
+  
+    /* Carta abierta: formato legible y estable */
+    .letter-section{min-height:1250px}
+    .envelope.open{height:850px;background:transparent;box-shadow:none;cursor:default}
+    .envelope.open:before,.envelope.open .front{opacity:0;pointer-events:none}
+    .envelope.open .paper{top:0;bottom:auto;transform:none;height:auto;min-height:810px;overflow:visible;z-index:6;box-shadow:0 22px 55px #57322d2e;border:1px solid #d8b46d55}
+    .envelope.open .paper span{display:block}
+    .music-frame{position:fixed;z-index:19;right:1rem;top:5rem;left:auto;width:min(360px,calc(100vw - 2rem));height:203px;opacity:1;display:none;pointer-events:auto;border:1px solid #d8b46d80;border-radius:12px;background:#071723;box-shadow:0 18px 50px #0008}
+    .music-frame.show{display:block}
+    @media(max-width:720px){.letter-section{min-height:1320px}.envelope.open{height:990px}.envelope.open .paper{min-height:950px;padding:1.7rem 1.35rem;font-size:.94rem;line-height:1.5;gap:.75rem}.envelope.open .paper .dear{font-size:1.65rem}.music-frame{top:4.8rem;height:190px}}
+</style>
 </head>
 <body>
   <button class="music" id="music"><b>♪</b><span>Escuchar Enamorados</span></button><iframe class="music-frame" id="music-frame" title="Enamorados de Tercer Cielo" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -53,7 +63,7 @@
     document.querySelector("#next").onclick=()=>{reason=(reason+1)%reasons.length;reasonEl.textContent=reasons[reason];reasonEl.style.animation="none";requestAnimationFrame(()=>reasonEl.style.animation="fade .5s")};
     document.querySelector("#envelope").onclick=e=>e.currentTarget.classList.add("open");
     document.querySelector("#reveal").onclick=()=>{document.querySelector("#question").style.display="none";document.querySelector("#answer").classList.add("show")};
-    document.querySelector("#music").onclick=function(){const frame=document.querySelector("#music-frame");if(playing){frame.src="";playing=false;this.classList.remove("playing");this.querySelector("span").textContent="Escuchar Enamorados";return}frame.src="https://www.youtube-nocookie.com/embed/KuY1JGYYXCw?autoplay=1&loop=1&playlist=KuY1JGYYXCw";playing=true;this.classList.add("playing");this.querySelector("span").textContent="Pausar Enamorados"};
+    document.querySelector("#music").onclick=function(){const frame=document.querySelector("#music-frame");if(playing){frame.src="";frame.classList.remove("show");playing=false;this.classList.remove("playing");this.querySelector("span").textContent="Escuchar Enamorados";return}frame.src="https://www.youtube.com/embed/KuY1JGYYXCw?autoplay=1&loop=1&playlist=KuY1JGYYXCw&controls=1&playsinline=1";frame.classList.add("show");playing=true;this.classList.add("playing");this.querySelector("span").textContent="Cerrar reproductor"};
   </script>
 </body>
 </html>
